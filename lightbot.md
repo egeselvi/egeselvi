@@ -21,8 +21,13 @@ maxY = len(height[0])-1 # max possible value of the y coordinate
 def heightDifferenceForward():
     if yon == 0 and y < maxY:
         return height[x][y+1] - height[x][y]
-    #elif yon == 1 and ...:
-        # we need to implement this...
+    elif yon == 2 and y < maxY:
+        return height[x][y-1] - height[x][y]
+    elif yon == 1 and x < maxX:
+        return height [x+1][y] - height [x][y]
+    elif yon == 3 and x < maxX:
+        return height [x-1][y] - height [x][y]
+    
         return 0
     
 
@@ -46,27 +51,20 @@ while komut != "q": # repeat  as long as we don't get the quid command
               y = y + 1
       elif yon == 2:
         if y == 0:
-         if y < maxY:
+            print("I can not move forward")
+            y = y
+        elif y < maxY:
               y = y - 1
       elif yon == 1:
           if x < maxX:
               x = x + 1
       elif yon == 3:
         if x == 0:
-         if x < maxX:
+            print("I can not move forward")
+            x = x
+        elif x < maxX:
               x = x - 1
-                
-    elif komut == "*": #jump code
-        if yon == 0:
-            if y < maxY:
-                if abs(heightDİfferenceForward()) == 1: # it may be minus so we need absolute value of this code
-                    y = y + 1
-        elif yon == 3:
-            if x > 0: #check we are not at the leftmost column
-                if abs(HeightDifference Forward()) == 1:
-                    x = x - 1
-      
-    
+
     elif komut=="@":
       if( isBlue[x][y] == True ):
          print("I am switching on or off")
